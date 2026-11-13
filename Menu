@@ -1,0 +1,39 @@
+using System;
+
+public class HelloWorld {
+static void Main()
+{
+    string[] nombres = new string[10]; double[] precios = new double[10]; int[] stocks = new int[10]; double totalVendido = 0; bool registrado = false;int opcion = 0;
+    do {
+    Console.WriteLine("Bienvenido a la tienda de Don Pedro,¿Que desea hacer?");
+    Console.WriteLine("1. Registrar producto");
+    Console.WriteLine("2. Vender");
+    Console.WriteLine("3. Mostrar inventario");
+    Console.WriteLine("4. Ver mas caro, mas barato y total vendido");
+    Console.WriteLine("5. Salir");
+        int.TryParse(Console.ReadLine(), out opcion);
+        switch(opcion)
+        {
+        case 1:
+            Console.WriteLine("Registrar producto");
+            break;
+        case 2:
+            Console.WriteLine("Vender");
+            break;
+        case 3:
+            Console.WriteLine("Mostrar inventario");
+            break;
+        case 4:
+            Console.WriteLine("Ver mas caro, mas barato y total vendido");
+            break;
+        case 5:
+            Console.WriteLine("Salir");
+            break;
+        default:
+            Console.WriteLine("Opcion no valida, intente de nuevo.");
+            break;    
+        }
+    }
+    while (opcion!=5);
+}
+}
