@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 
 public class HelloWorld
 {
     static void Main()
     {
         int cantidad = 0;
+        bool esNumero;
         string[] nombres = new string[10]; double[] precios = new double[10]; int[] stocks = new int[10]; double totalVendido = 0; bool registrado = false; int opcion = 0;
         do
         {
@@ -19,10 +20,14 @@ public class HelloWorld
             switch (opcion)
             {
                 case 1:
-                    do { 
+                    do {
                     Console.WriteLine("Registrar producto");
                     Console.WriteLine("¿Cuantos productos desea ingresar?");
-                    int.TryParse(Console.ReadLine(),out cantidad);
+                    esNumero = int.TryParse(Console.ReadLine(),out cantidad);
+                        if (!esNumero)
+                        { Console.WriteLine("Error, la cantidad debe ser un numero entero (no decimales, ni letras o simbolos");}
+                        else if (cantidad < 1 || cantidad > 10)
+                        { Console.WriteLine("Error, solo puede ingresar minimo un producto y maximo 10"); }
                     }
                     while (cantidad < 1 || cantidad > 10);
                     RegistrarProductos(nombres, precios, stocks, cantidad);
