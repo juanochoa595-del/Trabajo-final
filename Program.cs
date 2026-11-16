@@ -42,6 +42,7 @@ public class HelloWorld
                     break;
                 case 3:
                     Console.WriteLine("Mostrar inventario");
+                    MostrarInventario(nombres, precios, stocks, totalProductos);
                     break;
                 case 4:
                     Console.WriteLine("Ver mas caro, mas barato y total vendido");
@@ -147,5 +148,13 @@ public class HelloWorld
             return precios[indice] * cantidadCompra;
         }
         return subtotal;
+    }
+    static void MostrarInventario(string[] nombres, double[] precios, int[] stocks, int totalProductos)
+    {for (int i = 0; i < totalProductos; i++)
+        {
+            Console.WriteLine($"Inventario: {nombres[i]}, {precios[i]}, {stocks[i]}");
+            if (stocks[i] < 5)
+            { Console.WriteLine($"Por reponer: {nombres[i]}, {precios[i]} "); }
+        }
     }
 }
