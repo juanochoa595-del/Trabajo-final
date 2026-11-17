@@ -46,6 +46,7 @@ public class HelloWorld
                     break;
                 case 4:
                     Console.WriteLine("Ver mas caro, mas barato y total vendido");
+                    productoCaroBaratoTotalVendido(nombres, precios, totalProductos, totalVendido);
                     break;
                 case 5:
                     Console.WriteLine("Salir");
@@ -150,11 +151,34 @@ public class HelloWorld
         return subtotal;
     }
     static void MostrarInventario(string[] nombres, double[] precios, int[] stocks, int totalProductos)
-    {for (int i = 0; i < totalProductos; i++)
+    {
+        if (totalProductos == 0)
+        {
+            Console.WriteLine("Primero debe registrar productos.");
+            return ;
+        }
+        for (int i = 0; i < totalProductos; i++)
         {
             Console.WriteLine($"Inventario: {nombres[i]}, {precios[i]}, {stocks[i]}");
             if (stocks[i] < 5)
             { Console.WriteLine($"Por reponer: {nombres[i]}, {precios[i]} "); }
         }
+    }
+    static void productoCaroBaratoTotalVendido(string[] nombres, double[] precios, int totalProductos, double totalVendido)
+    {
+        if (totalProductos == 0)
+        {
+            Console.WriteLine("Primero debe registrar productos.");
+            return ;
+        }
+        double productoCaro = precios[0];
+        double productoBarato = precios[0];
+        for (int i = 0; i < totalProductos; i++)
+        { if (precios[i] > productoCaro)
+            { productoCaro = precios[i]; }
+            else if (precios[i] < productoBarato)
+            { productoBarato = precios[i];}
+        }
+        Console.WriteLine($"Producto mas caro: {productoCaro}, producto mas barato: {productoBarato}, total vendido: {totalVendido}");
     }
 }
